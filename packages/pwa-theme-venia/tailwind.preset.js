@@ -163,7 +163,8 @@ const extend = {
         site: '1440px'
     },
     minHeight: {
-        auto: 'auto'
+        auto: 'auto',
+        button: '40px'
     },
     minWidth: {
         auto: 'auto'
