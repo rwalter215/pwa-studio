@@ -48,16 +48,14 @@ const extend = {
     backgroundColor: theme => ({
         body: '#FFF',
         header: '#FFF',
-        subtle: theme('colors.gray.100')
+        subtle: theme('colors.gray.100'),
+        swatch: theme('colors.neutral.200'),
+        'swatch-selected': theme('colors.brand.500'),
     }),
     backgroundImage: theme => ({
         'gradient-radial': `radial-gradient(circle, ${theme(
             'colors.gray.100'
         )}, white)`,
-        swatch: theme('colors.gray.100'),
-        'swatch-selected': `linear-gradient(-45deg, rgba(0, 0, 0, 0.2), transparent), ${theme(
-            'colors.gray.100'
-        )}`
     }),
     borderColor: theme => ({
         buttonColor: {

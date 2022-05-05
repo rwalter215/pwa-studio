@@ -1,27 +1,42 @@
-.root {
+.base {
     composes: root from '../clickable.module.css';
 
-    composes: border from global;
+    composes: border-buttonWidth from global;
     composes: border-solid from global;
-    composes: border-strong from global;
-    composes: h-[3rem] from global;
-    composes: min-w-[3rem] from global;
+    composes: border-neutral-600 from global;
+    composes: h-[2.5rem] from global;
+    composes: min-w-[2.5rem] from global;
     composes: px-2xs from global;
     composes: py-0 from global;
-    composes: rounded-sm from global;
+    composes: rounded from global;
+
+    composes: active_bg-swatch-selected from global;
+    composes: active_text-white from global;
+
+    composes: hover_border-brand-500 from global;
+}
+.root {
+    composes: base;
+
+    composes: bg-neutral-200 from global;
 }
 
 .root_selected {
-    composes: root;
+    composes: base;
 
-    composes: bg-gray-900 from global;
+    composes: bg-swatch-selected from global;
     composes: text-white from global;
 }
 
-.root_focused {
+.root_compressed {
     composes: root;
+
+    composes: rounded-none from global; 
+    composes: first_rounded-l from global;
+    composes: last_rounded-r from global;
 }
 
-.root_selected_focused {
+.root_compressed_selected {
     composes: root_selected;
+    composes: root_compressed;
 }

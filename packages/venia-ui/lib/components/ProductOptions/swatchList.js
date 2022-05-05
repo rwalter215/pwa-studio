@@ -1,12 +1,12 @@
 import React, { useMemo } from 'react';
-import { arrayOf, func, object, shape, string } from 'prop-types';
+import { arrayOf, bool, func, object, shape, string } from 'prop-types';
 import Swatch from './swatch';
 
 import { useStyle } from '../../classify';
 import defaultClasses from './swatchList.module.css';
 
 const SwatchList = props => {
-    const { getItemKey, selectedValue = {}, items, onSelectionChange } = props;
+    const { getItemKey, selectedValue = {}, items, onSelectionChange, withLabels, text } = props;
 
     const classes = useStyle(defaultClasses, props.classes);
 
@@ -16,18 +16,26 @@ const SwatchList = props => {
                 const isSelected = item.label === selectedValue.label;
 
                 return (
-                    <Swatch
-                        key={getItemKey(item)}
-                        isSelected={isSelected}
-                        item={item}
-                        onClick={onSelectionChange}
-                    />
+                    <div className={classes.container}>
+                        <Swatch
+                            key={getItemKey(item)}
+                            isSelected={isSelected}
+                            item={item}
+                            onClick={onSelectionChange}
+                        />
+                        {withLabels && <span className={isSelected ? classes.label_selected : classes.label}>{item.label}</span>}
+                    </div>
                 );
             }),
-        [getItemKey, selectedValue.label, items, onSelectionChange]
+        [getItemKey, selectedValue.label, items, onSelectionChange, withLabels]
     );
 
-    return <div className={classes.root}>{swatches}</div>;
+    return (
+        <>
+            {text && <p className={classes.text}>{text}</p>}
+            <div className={classes.root}>{swatches}</div>
+        </>
+    );
 };
 
 SwatchList.propTypes = {
@@ -37,8 +45,15 @@ SwatchList.propTypes = {
     getItemKey: func,
     selectedValue: object,
     items: arrayOf(object),
-    onSelectionChange: func
+    onSelectionChange: func,
+    withLabels: bool,
+    text: string,
 };
+
+SwatchList.defaultProps = {
+    withLabels: false,
+    text: ''
+}
 
 SwatchList.displayName = 'SwatchList';
 

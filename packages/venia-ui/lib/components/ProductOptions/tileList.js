@@ -5,10 +5,14 @@ import Tile from './tile';
 import { useStyle } from '../../classify';
 import defaultClasses from './tileList.module.css';
 
+const getClassName = (name, isCompressed) =>
+    `${name}${isCompressed ? '_compressed' : ''}`;
+
 const TileList = props => {
-    const { getItemKey, selectedValue = {}, items, onSelectionChange } = props;
+    const { getItemKey, selectedValue = {}, items, onSelectionChange, isCompressed } = props;
 
     const classes = useStyle(defaultClasses, props.classes);
+    const className = classes[getClassName('root', isCompressed)];
 
     const tiles = useMemo(
         () =>
@@ -21,13 +25,14 @@ const TileList = props => {
                         isSelected={isSelected}
                         item={item}
                         onClick={onSelectionChange}
+                        isCompressed={isCompressed}
                     />
                 );
             }),
         [getItemKey, selectedValue.label, items, onSelectionChange]
     );
 
-    return <div className={classes.root}>{tiles}</div>;
+    return <div className={className}>{tiles}</div>;
 };
 
 TileList.propTypes = {
@@ -39,6 +44,10 @@ TileList.propTypes = {
     items: arrayOf(object),
     onSelectionChange: func
 };
+
+TileList.defaultProps = {
+    isCompressed: false,
+}
 
 TileList.displayName = 'TileList';
 
