@@ -9,7 +9,13 @@ const getClassName = (name, isCompressed) =>
     `${name}${isCompressed ? '_compressed' : ''}`;
 
 const TileList = props => {
-    const { getItemKey, selectedValue = {}, items, onSelectionChange, isCompressed } = props;
+    const {
+        getItemKey,
+        selectedValue = {},
+        items,
+        onSelectionChange,
+        isCompressed
+    } = props;
 
     const classes = useStyle(defaultClasses, props.classes);
     const className = classes[getClassName('root', isCompressed)];
@@ -46,8 +52,8 @@ TileList.propTypes = {
 };
 
 TileList.defaultProps = {
-    isCompressed: false,
-}
+    isCompressed: false
+};
 
 TileList.displayName = 'TileList';
 

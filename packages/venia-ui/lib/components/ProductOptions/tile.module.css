@@ -3,14 +3,13 @@
 
     composes: border-buttonWidth from global;
     composes: border-solid from global;
-    composes: border-neutral-600 from global;
+    composes: border-tile-base from global;
     composes: h-[2.5rem] from global;
     composes: min-w-[2.5rem] from global;
     composes: px-2xs from global;
     composes: py-0 from global;
-    composes: rounded from global;
 
-    composes: active_bg-swatch-selected from global;
+    composes: active_bg-swatchSelected from global;
     composes: active_text-white from global;
 
     composes: hover_border-brand-500 from global;
@@ -18,25 +17,30 @@
 .root {
     composes: base;
 
-    composes: bg-neutral-200 from global;
+    composes: rounded-radius1 from global;
+    composes: bg-swatch from global;
 }
 
 .root_selected {
     composes: base;
 
-    composes: bg-swatch-selected from global;
-    composes: text-white from global;
+    composes: rounded-radius1 from global;
+    composes: bg-swatchSelected from global;
+    composes: text-swatchSelected from global;
 }
 
 .root_compressed {
-    composes: root;
+    composes: base;
 
-    composes: rounded-none from global; 
-    composes: first_rounded-l from global;
-    composes: last_rounded-r from global;
+    composes: bg-swatch from global;
+    composes: rounded-none from global;
+    composes: first_rounded-l-radius1 from global; /** make sure radius 3px */
+    composes: last_rounded-r-radius1 from global;
 }
 
 .root_compressed_selected {
-    composes: root_selected;
     composes: root_compressed;
+
+    composes: bg-swatchSelected from global;
+    composes: text-swatchSelected from global;
 }

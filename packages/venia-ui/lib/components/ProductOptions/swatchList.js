@@ -6,7 +6,14 @@ import { useStyle } from '../../classify';
 import defaultClasses from './swatchList.module.css';
 
 const SwatchList = props => {
-    const { getItemKey, selectedValue = {}, items, onSelectionChange, withLabels, text } = props;
+    const {
+        getItemKey,
+        selectedValue = {},
+        items,
+        onSelectionChange,
+        withLabels,
+        text
+    } = props;
 
     const classes = useStyle(defaultClasses, props.classes);
 
@@ -23,7 +30,17 @@ const SwatchList = props => {
                             item={item}
                             onClick={onSelectionChange}
                         />
-                        {withLabels && <span className={isSelected ? classes.label_selected : classes.label}>{item.label}</span>}
+                        {withLabels && (
+                            <span
+                                className={
+                                    isSelected
+                                        ? classes.label_selected
+                                        : classes.label
+                                }
+                            >
+                                {item.label}
+                            </span>
+                        )}
                     </div>
                 );
             }),
@@ -47,13 +64,13 @@ SwatchList.propTypes = {
     items: arrayOf(object),
     onSelectionChange: func,
     withLabels: bool,
-    text: string,
+    text: string
 };
 
 SwatchList.defaultProps = {
     withLabels: false,
     text: ''
-}
+};
 
 SwatchList.displayName = 'SwatchList';
 

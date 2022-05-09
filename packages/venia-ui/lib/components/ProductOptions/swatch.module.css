@@ -5,15 +5,15 @@
     composes: border-solid from global;
     composes: h-[2.5rem] from global;
     composes: w-[2.5rem] from global;
-    background: var(--venia-swatch-bg);
+    composes: bg-swatchVariable from global;
 
     composes: hover_border-brand-500 from global;
 }
-/* TODO @TW: review. This relies on custom prop to set color from JSX "style" prop. */
+
 .root {
     composes: base;
 
-    composes: border-neutral-400 from global;
+    composes: border-buttonColor-action from global;
 }
 
 .root_selected {

@@ -50,16 +50,20 @@ const extend = {
         header: '#FFF',
         subtle: theme('colors.gray.100'),
         swatch: theme('colors.neutral.200'),
-        'swatch-selected': theme('colors.brand.500'),
+        swatchSelected: theme('colors.brand.500'),
+        swatchVariable: 'var(--venia-swatch-bg)'
     }),
     backgroundImage: theme => ({
         'gradient-radial': `radial-gradient(circle, ${theme(
             'colors.gray.100'
-        )}, white)`,
+        )}, white)`
     }),
     borderColor: theme => ({
         buttonColor: {
             action: theme('colors.neutral.400')
+        },
+        tile: {
+            base: theme('colors.neutral.600')
         },
         error: theme('colors.red.400'),
         info: theme('colors.green.600'),
@@ -77,7 +81,7 @@ const extend = {
     }),
     borderRadius: {
         // Primitive
-        radius1: '4px',
+        radius1: '3px',
         radius2: '8px',
         radius3: '100%'
 
@@ -137,7 +141,9 @@ const extend = {
         autoAuto: 'auto auto',
         autoFirst: 'auto 1fr',
         autoLast: '1fr auto',
-        carouselThumbnailList: 'repeat(auto-fit, 1rem)'
+        carouselThumbnailList: 'repeat(auto-fit, 1rem)',
+        swatchList: 'repeat(auto-fit, minmax(2rem, max-content))',
+        tileList: 'repeat(auto-fit, minmax(3rem, max-content))'
     },
     gridTemplateRows: {
         auto: 'auto',
@@ -199,7 +205,8 @@ const extend = {
         colorDefault: theme('colors.gray.900'), // TODO @TW naming collision: TW puts "fontSize" + "color" under "text-" prefix
         error: theme('colors.red.700'),
         subtle: theme('colors.gray.600'),
-        DEFAULT: theme('colors.gray.900')
+        DEFAULT: theme('colors.gray.900'),
+        swatchSelected: theme('colors.neutral.50')
     }),
     transitionTimingFunction: {
         standard: 'cubic-bezier(0.4, 0, 0.2, 1)'

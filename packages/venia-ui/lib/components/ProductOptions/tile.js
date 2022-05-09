@@ -6,14 +6,16 @@ import defaultClasses from './tile.module.css';
 import { useTile } from '@magento/peregrine/lib/talons/ProductOptions/useTile';
 
 const getClassName = (name, isSelected, isCompressed) =>
-    `${name}${isCompressed ? '_compressed' : ''}${isSelected ? '_selected' : ''}`;
+    `${name}${isCompressed ? '_compressed' : ''}${
+        isSelected ? '_selected' : ''
+    }`;
 
 const Tile = props => {
     const {
         isSelected,
         item: { label, value_index },
         onClick,
-        isCompressed,
+        isCompressed
     } = props;
 
     const talonProps = useTile({
@@ -53,5 +55,5 @@ Tile.propTypes = {
 
 Tile.defaultProps = {
     isSelected: false,
-    isCompressed: false,
+    isCompressed: false
 };

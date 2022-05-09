@@ -25,9 +25,14 @@ const SWATCH_WIDTH = 40;
 const Swatch = props => {
     const {
         isSelected,
-        item: { label, value_index, swatch_data, maxInfo = { isMax: false, swatchesRemain: 0 } },
+        item: {
+            label,
+            value_index,
+            swatch_data,
+            maxInfo = { isMax: false, swatchesRemain: 0 }
+        },
         onClick,
-        style,
+        style
     } = props;
 
     const talonProps = useSwatch({
@@ -94,7 +99,7 @@ Swatch.propTypes = {
 };
 
 Swatch.defaultProps = {
-    isSelected: false,
+    isSelected: false
 };
 
 export default Swatch;
