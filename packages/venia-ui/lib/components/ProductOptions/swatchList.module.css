@@ -1,5 +1,5 @@
 .root {
-    composes: gap-xs from global;
+    composes: gap-x-2 from global;
     composes: grid from global;
     composes: grid-flow-col from global;
     composes: grid-cols-swatchList from global;
@@ -8,6 +8,15 @@
 .label {
     composes: text-base from global;
     composes: mt-1.5 from global;
+
+    /* These propterties are needed for ellipsis functionality */
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: -webkit-fill-available;
+    width: -moz-available;
+    width: stretch;
+    max-width: fit-content;
+    white-space: nowrap;
 }
 
 .label_selected {

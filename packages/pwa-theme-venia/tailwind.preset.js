@@ -49,9 +49,11 @@ const extend = {
         body: '#FFF',
         header: '#FFF',
         subtle: theme('colors.gray.100'),
-        swatch: theme('colors.neutral.200'),
-        swatchSelected: theme('colors.brand.500'),
-        swatchVariable: 'var(--venia-swatch-bg)'
+        swatch: {
+            base: theme('colors.neutral.200'),
+            selected: theme('colors.brand.500'),
+            variable: 'var(--venia-swatch-bg)'
+        }
     }),
     backgroundImage: theme => ({
         'gradient-radial': `radial-gradient(circle, ${theme(
@@ -142,7 +144,7 @@ const extend = {
         autoFirst: 'auto 1fr',
         autoLast: '1fr auto',
         carouselThumbnailList: 'repeat(auto-fit, 1rem)',
-        swatchList: 'repeat(auto-fit, minmax(2rem, max-content))',
+        swatchList: 'repeat(auto-fill, minmax(4rem, 1fr))',
         tileList: 'repeat(auto-fit, minmax(3rem, max-content))'
     },
     gridTemplateRows: {
@@ -206,7 +208,9 @@ const extend = {
         error: theme('colors.red.700'),
         subtle: theme('colors.gray.600'),
         DEFAULT: theme('colors.gray.900'),
-        swatchSelected: theme('colors.neutral.50')
+        swatch: {
+            selected: theme('colors.neutral.50'),
+        }
     }),
     transitionTimingFunction: {
         standard: 'cubic-bezier(0.4, 0, 0.2, 1)'

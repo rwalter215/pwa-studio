@@ -11,7 +11,7 @@ const SwatchList = props => {
         selectedValue = {},
         items,
         onSelectionChange,
-        withLabels,
+        hasLabels,
         text
     } = props;
 
@@ -30,7 +30,7 @@ const SwatchList = props => {
                             item={item}
                             onClick={onSelectionChange}
                         />
-                        {withLabels && (
+                        {hasLabels && (
                             <span
                                 className={
                                     isSelected
@@ -44,7 +44,7 @@ const SwatchList = props => {
                     </div>
                 );
             }),
-        [getItemKey, selectedValue.label, items, onSelectionChange, withLabels]
+        [getItemKey, selectedValue.label, items, onSelectionChange, hasLabels]
     );
 
     return (
@@ -63,12 +63,12 @@ SwatchList.propTypes = {
     selectedValue: object,
     items: arrayOf(object),
     onSelectionChange: func,
-    withLabels: bool,
+    hasLabels: bool,
     text: string
 };
 
 SwatchList.defaultProps = {
-    withLabels: false,
+    hasLabels: false,
     text: ''
 };
 

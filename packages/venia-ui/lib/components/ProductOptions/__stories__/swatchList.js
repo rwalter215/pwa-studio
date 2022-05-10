@@ -59,7 +59,7 @@ stories.add('with text', () => {
 });
 
 stories.add('with Labels', () => {
-    return <SwatchListStory withLabels />;
+    return <SwatchListStory hasLabels />;
 });
 
 stories.add('with Max', () => {
@@ -136,7 +136,7 @@ stories.add('with Max & Labels', () => {
     return (
         <SwatchListStory
             items={items}
-            withLabels
+            hasLabels
             selectedValue={selectedValue}
         />
     );
@@ -179,7 +179,7 @@ stories.add('with Max, Labels & Text', () => {
     return (
         <SwatchListStory
             items={items}
-            withLabels
+            hasLabels
             selectedValue={selectedValue}
             text="Shown in Option"
         />
@@ -217,5 +217,5 @@ stories.add('EC: with long Labels', () => {
             }
         }
     ];
-    return <SwatchListStory items={items} withLabels />;
+    return <SwatchListStory items={items} hasLabels />;
 });

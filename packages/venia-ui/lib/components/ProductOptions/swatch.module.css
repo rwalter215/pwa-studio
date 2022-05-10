@@ -5,7 +5,7 @@
     composes: border-solid from global;
     composes: h-[2.5rem] from global;
     composes: w-[2.5rem] from global;
-    composes: bg-swatchVariable from global;
+    composes: bg-swatch-variable from global;
 
     composes: hover_border-brand-500 from global;
 }
