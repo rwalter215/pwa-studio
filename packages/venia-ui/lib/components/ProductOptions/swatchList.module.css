@@ -10,13 +10,15 @@
     composes: mt-1.5 from global;
 
     /* These propterties are needed for ellipsis functionality */
-    text-overflow: ellipsis;
+    /* text-overflow: ellipsis;
     overflow: hidden;
     width: -webkit-fill-available;
     width: -moz-available;
     width: stretch;
     max-width: fit-content;
-    white-space: nowrap;
+    white-space: wrap; */
+    overflow-wrap: break-word;
+    max-width: 100%;
 }
 
 .label_selected {

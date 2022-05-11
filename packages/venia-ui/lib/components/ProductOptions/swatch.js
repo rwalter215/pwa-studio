@@ -81,6 +81,8 @@ const Swatch = props => {
             style={finalStyle}
             title={label}
             type="button"
+            role="radio"
+            aria-checked={isSelected}
             data-cy="Swatch-root"
         >
             {isMax && `+${swatchesRemain}`}

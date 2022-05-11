@@ -50,7 +50,7 @@ const SwatchList = props => {
     return (
         <>
             {text && <p className={classes.text}>{text}</p>}
-            <div className={classes.root}>{swatches}</div>
+            <div role="radiogroup" className={classes.root}>{swatches}</div>
         </>
     );
 };

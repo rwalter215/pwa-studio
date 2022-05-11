@@ -6,8 +6,7 @@ import defaultClasses from './tile.module.css';
 import { useTile } from '@magento/peregrine/lib/talons/ProductOptions/useTile';
 
 const getClassName = (name, isSelected, isCompressed) =>
-    `${name}${isCompressed ? '_compressed' : ''}${
-        isSelected ? '_selected' : ''
+    `${name}${isCompressed ? '_compressed' : ''}${isSelected ? '_selected' : ''
     }`;
 
 const Tile = props => {
@@ -34,6 +33,8 @@ const Tile = props => {
             onClick={handleClick}
             title={label}
             type="button"
+            role="radio"
+            aria-checked={isSelected}
             data-cy="Tile-button"
         >
             <span>{label}</span>

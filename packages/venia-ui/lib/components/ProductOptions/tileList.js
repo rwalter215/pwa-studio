@@ -38,7 +38,7 @@ const TileList = props => {
         [getItemKey, selectedValue.label, items, onSelectionChange]
     );
 
-    return <div className={className}>{tiles}</div>;
+    return <div role="radiogroup" className={className}>{tiles}</div>;
 };
 
 TileList.propTypes = {
