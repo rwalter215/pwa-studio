@@ -5,15 +5,16 @@ import { useStyle } from '../../classify';
 import defaultClasses from './tile.module.css';
 import { useTile } from '@magento/peregrine/lib/talons/ProductOptions/useTile';
 
-const getClassName = (name, isSelected, hasFocus) =>
-    `${name}${isSelected ? '_selected' : ''}${hasFocus ? '_focused' : ''}`;
+const getClassName = (name, isSelected, isCompressed) =>
+    `${name}${isCompressed ? '_compressed' : ''}${isSelected ? '_selected' : ''
+    }`;
 
 const Tile = props => {
     const {
-        hasFocus,
         isSelected,
         item: { label, value_index },
-        onClick
+        onClick,
+        isCompressed
     } = props;
 
     const talonProps = useTile({
@@ -24,7 +25,7 @@ const Tile = props => {
     const { handleClick } = talonProps;
 
     const classes = useStyle(defaultClasses, props.classes);
-    const className = classes[getClassName('root', isSelected, hasFocus)];
+    const className = classes[getClassName('root', isSelected, isCompressed)];
 
     return (
         <button
@@ -32,6 +33,8 @@ const Tile = props => {
             onClick={handleClick}
             title={label}
             type="button"
+            role="radio"
+            aria-checked={isSelected}
             data-cy="Tile-button"
         >
             <span>{label}</span>
@@ -42,16 +45,16 @@ const Tile = props => {
 export default Tile;
 
 Tile.propTypes = {
-    hasFocus: bool,
     isSelected: bool,
     item: shape({
         label: string.isRequired,
         value_index: oneOfType([number, string]).isRequired
     }).isRequired,
-    onClick: func.isRequired
+    onClick: func.isRequired,
+    isCompressed: bool
 };
 
 Tile.defaultProps = {
-    hasFocus: false,
-    isSelected: false
+    isSelected: false,
+    isCompressed: false
 };

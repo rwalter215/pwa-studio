@@ -11,24 +11,26 @@ import {
 } from 'prop-types';
 
 import { useStyle } from '../../classify';
-import Icon from '../Icon';
-import { Check as CheckIcon } from 'react-feather';
 
 import defaultClasses from './swatch.module.css';
 
 import { useSwatch } from '@magento/peregrine/lib/talons/ProductOptions/useSwatch';
 
-const getClassName = (name, isSelected, hasFocus) =>
-    `${name}${isSelected ? '_selected' : ''}${hasFocus ? '_focused' : ''}`;
+const getClassName = (name, isSelected) =>
+    `${name}${isSelected ? '_selected' : ''}`;
 
 // Swatches _must_ have a 1x1 aspect ratio to match the UI.
-const SWATCH_WIDTH = 48;
+const SWATCH_WIDTH = 40;
 
 const Swatch = props => {
     const {
-        hasFocus,
         isSelected,
-        item: { label, value_index, swatch_data },
+        item: {
+            label,
+            value_index,
+            swatch_data,
+            maxInfo = { isMax: false, swatchesRemain: 0 }
+        },
         onClick,
         style
     } = props;
@@ -39,13 +41,9 @@ const Swatch = props => {
     });
 
     const { handleClick } = talonProps;
+    const { isMax, swatchesRemain, onMaxClick } = maxInfo;
 
     const classes = useStyle(defaultClasses, props.classes);
-
-    const checkStyle = useMemo(
-        () => (isSelected ? classes.checked : classes.unchecked),
-        [classes.checked, classes.unchecked, isSelected]
-    );
 
     let finalStyle = style;
 
@@ -74,24 +72,25 @@ const Swatch = props => {
         });
     }
 
-    const className = classes[getClassName('root', isSelected, hasFocus)];
+    const className = classes[getClassName('root', isSelected)];
 
     return (
         <button
             className={className}
-            onClick={handleClick}
+            onClick={onMaxClick || handleClick}
             style={finalStyle}
             title={label}
             type="button"
+            role="radio"
+            aria-checked={isSelected}
             data-cy="Swatch-root"
         >
-            <Icon classes={{ root: checkStyle }} src={CheckIcon} />
+            {isMax && `+${swatchesRemain}`}
         </button>
     );
 };
 
 Swatch.propTypes = {
-    hasFocus: bool,
     isSelected: bool,
     item: shape({
         label: string.isRequired,
@@ -102,7 +101,6 @@ Swatch.propTypes = {
 };
 
 Swatch.defaultProps = {
-    hasFocus: false,
     isSelected: false
 };
 
