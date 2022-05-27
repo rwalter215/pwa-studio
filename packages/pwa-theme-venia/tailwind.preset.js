@@ -60,6 +60,7 @@ const extend = {
         )}`
     }),
     borderColor: theme => ({
+        accordionColor: theme('colors.neutral.400'),
         buttonColor: {
             action: theme('colors.neutral.400')
         },
@@ -91,7 +92,8 @@ const extend = {
     },
     borderWidth: {
         DEFAULT: '1px',
-        buttonWidth: '1.5px'
+        buttonWidth: '1.5px',
+        accordion: '1.5px',
     },
     boxShadow: theme => ({
         buttonFocus: `-6px 6px ${theme('colors.brand.700')} / 0.3`,

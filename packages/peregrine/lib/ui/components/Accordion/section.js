@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import { ChevronDown as ArrowDown, ChevronUp as ArrowUp } from 'react-feather';
+import { Plus as ShowMore, Minus as ShowLess } from 'react-feather';
 
 import { useAccordionContext } from './accordion';
 import Icon from '../Icon';
@@ -21,8 +21,8 @@ const Section = props => {
     );
 
     const isOpen = openSectionIds.has(id);
-    const titleIconSrc = isOpen ? ArrowUp : ArrowDown;
-    const titleIcon = <Icon src={titleIconSrc} size={24} />;
+    const titleIconSrc = isOpen ? ShowLess : ShowMore;
+    const titleIcon = <Icon src={titleIconSrc} size={16} />;
 
     const classes = useStyle(defaultClasses, props.classes);
     const contentsContainerClass = isOpen

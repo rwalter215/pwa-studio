@@ -27,7 +27,7 @@
 }
 
 .title {
-    composes: text-lg from global;
+    composes: text-base from global;
 }
 
 .title_container {
@@ -42,7 +42,7 @@
     composes: grid from global;
     composes: grid-cols-1 from global;
     composes: grid-flow-col from global;
-    composes: h-[4.5rem] from global;
+    composes: h-[4rem] from global;
     composes: items-center from global;
     composes: justify-items-start from global;
     composes: px-sm from global;
